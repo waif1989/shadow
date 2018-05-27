@@ -20,9 +20,13 @@ function addSourceToVideo(element, src, type) {
 function createShadowDom () {
     const adiv = document.getElementById('video-content');
     let root = null;
-    try {
-        root = adiv.attachShadow({mode: 'closed'});
-    } catch (e) {
+    if(document.head.createShadowRoot || document.head.attachShadow) {
+        try {
+            root = adiv.attachShadow({mode: 'closed'});
+        } catch (e) {
+            root = adiv.createShadowRoot();
+        }
+    } else {
         root = adiv;
     }
     // const root = adiv.attachShadow({mode: 'closed'});
