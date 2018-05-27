@@ -3,13 +3,16 @@ const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const isPro = () => {
+	return process.env.NODE_ENV = 'production';
+};
 
 const config = {
-	mode: 'development',
+	mode: isPro() ? 'production' : 'development',
 	entry: ['babel-polyfill', './src/dev-entry/dev.js'],
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.[hash:5].js',
+		filename: 'shadow.[hash:5].js',
 		publicPath: '/'
 	},
 	plugins: [

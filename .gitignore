@@ -10,5 +10,6 @@ npm-debug.log
 *.out
 *.pid
 *.gz
+dist
 .idea
 .project

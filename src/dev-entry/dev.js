@@ -1,13 +1,6 @@
 import '../assets/css/reset.css';
 import '../assets/less/index.less';
 
-const classStyle = {
-    width: '7.5rem',
-    display: 'block',
-    margin: 'auto',
-    height: '4rem'
-};
-
 function addSourceToVideo(element, src, type) {
     var source = document.createElement('source');
 
