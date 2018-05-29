@@ -24,7 +24,12 @@
 <body>
 <div id="video-content"></div>
 <template class="play-inline">
-    <style>
+    <style type="text/css">
+       /* @import "https://unpkg.com/video.js@7.0.3/dist/video-js.css";*/
+       .video-btn {
+           width: 1rem;
+           height: 1rem;
+       }
         .IIV::-webkit-media-controls-play-button,
         .IIV::-webkit-media-controls-start-playback-button {
             opacity: 0;
@@ -32,9 +37,79 @@
             width: 5px;
         }
         .shadow-video {
+            width: 7.5rem;
+            height: 4rem;
+            display: block;
             object-fit:fill
         }
+       /*video::-webkit-media-controls-panel {
+           display:none !important;
+       }
+       video::-webkit-media-controls-play-button {
+           display: none !important;
+       }*/
+       video::-webkit-media-controls-start-playback-button {
+           display: none !important;
+           -webkit-appearance: none;
+       }
+       video::-webkit-media-controls-current-time-display {
+           display: none !important;
+           -webkit-appearance: none;
+       }
+
+       video::-webkit-media-controls-time-remaining-display {
+           display: none !important;
+           -webkit-appearance: none;
+       }
+
+       video::-webkit-media-controls-timeline {
+           display: none !important;
+           -webkit-appearance: none;
+       }
+
+       video::-webkit-media-controls-mute-button {
+           display: none !important;
+           -webkit-appearance: none;
+       }
+
+       video::-webkit-media-controls-volume-slider {
+           display: none !important;
+           -webkit-appearance: none;
+       }
+
+       video::-webkit-media-controls-fullscreen-button {
+           display: none !important;
+           -webkit-appearance: none;
+       }
+
+       video::-internal-media-controls-download-button {
+           display: none !important;
+           -webkit-appearance: none;
+       }
+       /**::-moz-list-bullet, *::-moz-list-number {
+           display:none !important;
+       }
+       *::-moz-meter-bar {
+           display:none !important;
+       }
+       :-moz-full-screen:not(:root)::backdrop {
+           display:none !important;
+       }*/
+       *::backdrop {
+           display:none !important;
+       }
+       :fullscreen:not(:root) {
+           display:none !important;
+       }
     </style>
+    <script type="application/javascript">
+       /* document.getElementById('shadow-video').addEventListener('click', function () {
+	        document.getElementById('shadow-video').play();
+        });*/
+       function videoPlay () {
+	       document.getElementById('video-content').shadowRoot.getElementById('shadow-video').play();
+       }
+    </script>
     <content></content>
 </template>
 </body>
