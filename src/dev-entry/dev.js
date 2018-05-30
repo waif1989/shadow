@@ -3,6 +3,8 @@ import '../assets/less/index.less';
 import enableInlineVideo from 'iphone-inline-video';
 // import videojs from 'video.js';
 
+let playing = false;
+
 function addSourceToVideo(element, src, type) {
     const source = document.createElement('source');
     source.src = src;
@@ -10,8 +12,9 @@ function addSourceToVideo(element, src, type) {
     element.appendChild(source);
 }
 
-function activatePlayinline (outSideElm) {
-	const shadowVideo = outSideElm.shadowRoot.querySelector('#shadow-video');
+function activatePlayinline (domId) {
+	const adiv = document.getElementById(domId);
+	const shadowVideo = adiv.shadowRoot.querySelector('#shadow-video');
 	enableInlineVideo(shadowVideo);
 }
 
@@ -31,18 +34,23 @@ function addStyleToShadow (root) {
 	root.appendChild(document.importNode(template.content, true));
 }
 
+function createShadowRoot (domId) {
+	const adiv = document.getElementById(domId);
+	let root = null;
+	if (document.head.createShadowRoot || document.head.attachShadow) {
+		try {
+			root = adiv.attachShadow({mode: 'open'});
+		} catch (e) {
+			root = adiv.createShadowRoot();
+		}
+	} else {
+		root = adiv;
+	}
+	return root;
+}
+
 function createShadowDom () {
-    const adiv = document.getElementById('video-content');
-    let root = null;
-    if (document.head.createShadowRoot || document.head.attachShadow) {
-        try {
-            root = adiv.attachShadow({mode: 'open'});
-        } catch (e) {
-            root = adiv.createShadowRoot();
-        }
-    } else {
-        root = adiv;
-    }
+    const root = createShadowRoot('video-content');
     // const root = adiv.attachShadow({mode: 'closed'});
     const video = document.createElement('video');
 	video.setAttribute('id', 'shadow-video');
@@ -59,22 +67,40 @@ function createShadowDom () {
 	root.appendChild(video);
 	// addPlayBtn(root);
     addSourceToVideo(video, 'https://onegoods.nosdn.127.net/resupload/2018/04/09/e17e7a65f00d7e8173c0c3f88f2c9713.mp4', 'video/mp4');
-	// activatePlayinline(adiv);
+    return root;
+	// activatePlayinline('video-content');
 	/*videojs(adiv.shadowRoot.querySelector('#shadow-video'), {}, function onPlayerReady() {
 		videojs.log('Your player is ready!');
 	});*/
 }
 
-function templateReplace () {
-    const host = document.querySelector('#video-content');
-    const root = host.attachShadow({mode:'open'});
-    const con = document.getElementById('tp-video').content.cloneNode(true);
-    root.appendChild(con);
+function addVideoPlayListr (root) {
+	root.getElementById('shadow-video').addEventListener('play', function () {
+		playing = true;
+		root.getElementById('shadow-video').removeAttribute('controls');
+	});
 }
 
-document.getElementById('video-content').addEventListener('touchstart', () => {
-	// const adiv = document.getElementById('video-content');
-	// playVideo(adiv);
-});
+function addVideoCloseListr(root) {
+	document.getElementById('video-content').addEventListener('touchstart', () => {
+		// const adiv = document.getElementById('video-content');
+		// playVideo(adiv);
+		if (playing) {
+			playing = false;
+			root.getElementById('shadow-video').setAttribute('controls', '');
+			root.getElementById('shadow-video').pause();
+		}
+	});
+}
 
-document.body.onload = createShadowDom;
+function init () {
+	const root = createShadowDom();
+	addVideoPlayListr(root);
+	addVideoCloseListr(root);
+}
+
+
+
+document.body.onload = function () {
+	init();
+};

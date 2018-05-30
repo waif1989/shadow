@@ -42,13 +42,16 @@
             display: block;
             object-fit:fill
         }
+       /*audio::-webkit-media-controls, video::-webkit-media-controls {
+           opacity: 0 !important;
+       }*/
        /*video::-webkit-media-controls-panel {
            display:none !important;
        }
        video::-webkit-media-controls-play-button {
            display: none !important;
        }*/
-       video::-webkit-media-controls-start-playback-button {
+       /*video::-webkit-media-controls-start-playback-button {
            display: none !important;
            -webkit-appearance: none;
        }
@@ -85,7 +88,7 @@
        video::-internal-media-controls-download-button {
            display: none !important;
            -webkit-appearance: none;
-       }
+       }*/
        /**::-moz-list-bullet, *::-moz-list-number {
            display:none !important;
        }
@@ -95,22 +98,22 @@
        :-moz-full-screen:not(:root)::backdrop {
            display:none !important;
        }*/
-       *::backdrop {
+       /**::backdrop {
            display:none !important;
        }
        :fullscreen:not(:root) {
            display:none !important;
-       }
+       }*/
     </style>
     <script type="application/javascript">
-       /* document.getElementById('shadow-video').addEventListener('click', function () {
-	        document.getElementById('shadow-video').play();
-        });*/
+        setTimeout(function () {
+	        console.log('---', document.getElementById('video-content').shadowRoot.getElementById('shadow-video').querySelectorAll('[pseudo="-webkit-media-controls"]'));
+        }, 1000);
        function videoPlay () {
 	       document.getElementById('video-content').shadowRoot.getElementById('shadow-video').play();
        }
     </script>
-    <content></content>
+    <content select="#video-content"></content>
 </template>
 </body>
 </html>
