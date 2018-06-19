@@ -77,7 +77,7 @@ const config = {
 				}]
 			},
 			{
-				test: /\.(png|jpg|gif|mp4)$/,
+				test: /\.(png|jpg|gif|mp4|ogv)$/,
 				use: [
 					{
 						loader: 'file-loader',
@@ -109,6 +109,7 @@ const config = {
 		host: '192.168.1.106',
 		// host: '0.0.0.0',
 		contentBase: path.join(__dirname, 'dist'), // boolean | string | array, static file location
+        // contentBase: path.join(__dirname, 'static'), // boolean | string | array, static file location
 		compress: true, // enable gzip compression
 		historyApiFallback: true, // true for index.html upon 404, object for multiple paths
 		hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin

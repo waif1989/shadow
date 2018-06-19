@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "iphone-inline-video": "^2.2.2",
+    "ogv": "^1.5.7",
     "video.js": "^7.0.3"
   }
 }

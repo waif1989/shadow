@@ -1,7 +1,9 @@
 import '../assets/css/reset.css';
 import '../assets/less/index.less';
 import testMp4 from '../assets/video/test.mp4';
+import testOgv from '../assets/video/test.ogv';
 import testPoster from '../assets/img/test.jpg';
+const ogv = require('ogv');
 import enableInlineVideo from 'iphone-inline-video';
 // import videojs from 'video.js';
 
@@ -167,7 +169,19 @@ document.body.onload = function () {
 */
 
 document.body.onload = function () {
-    createRealDom();
+    ogv.OGVLoader.base = '/ogv/dist';
+    const player = new ogv.OGVPlayer();
+
+    const containerElement = document.getElementById('wrapper');
+    containerElement.appendChild(player);
+    player.src = testOgv;
+    player.poster = 'https://onegoods.nosdn.127.net/resupload/2018/5/28/64f7214860701e146fc9ffaa0f58662f.jpg';
+    player.controls = true;
+    player.width = '375';
+    document.getElementById('video-btn').addEventListener('click', () => {
+        player.play();
+	});
+    // player.play();
 };
 
 /*import Chimee from 'chimee';
