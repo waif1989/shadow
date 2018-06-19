@@ -77,7 +77,7 @@ const config = {
 				}]
 			},
 			{
-				test: /\.(png|jpg|gif)$/,
+				test: /\.(png|jpg|gif|mp4)$/,
 				use: [
 					{
 						loader: 'file-loader',
@@ -106,8 +106,8 @@ const config = {
 	devtool: 'source-map',
 	context: __dirname,
 	devServer: {
-		// host: '192.168.1.106',
-		host: '0.0.0.0',
+		host: '192.168.1.106',
+		// host: '0.0.0.0',
 		contentBase: path.join(__dirname, 'dist'), // boolean | string | array, static file location
 		compress: true, // enable gzip compression
 		historyApiFallback: true, // true for index.html upon 404, object for multiple paths

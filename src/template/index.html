@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width, shrink-to-fit=no" />
     <title>TestVideo</title>
     <script>
         (function(){
@@ -22,98 +22,50 @@
     </script>
 </head>
 <body>
+<!--<video
+        id="shadow-video"
+        class="shadow-video"
+        src="https://onegoods.nosdn.127.net/resupload/2018/04/09/e17e7a65f00d7e8173c0c3f88f2c9713.mp4"
+        playsinline="isiPhoneShowPlaysinline"
+        webkit-playsinline="isiPhoneShowPlaysinline"
+        x-webkit-airplay
+        poster="https://onegoods.nosdn.127.net/resupload/2018/5/28/64f7214860701e146fc9ffaa0f58662f.jpg">
+            <source src="https://onegoods.nosdn.127.net/resupload/2018/04/09/e17e7a65f00d7e8173c0c3f88f2c9713.mp4" type="video/mp4">
+</video>-->
+<!--<video
+        id="shadow-video2"
+        class="shadow-video"
+        preload="none"
+        playsinline
+        webkit-playsinline
+        x-webkit-airplay
+        controls
+        poster="//onegoods.nosdn.127.net/resupload/2018/5/28/64f7214860701e146fc9ffaa0f58662f.jpg"
+        src="//onegoods.nosdn.127.net/resupload/2018/04/09/e17e7a65f00d7e8173c0c3f88f2c9713.mp4">
+    <source src="//onegoods.nosdn.127.net/resupload/2018/04/09/e17e7a65f00d7e8173c0c3f88f2c9713.mp4" type="video/mp4">
+</video>-->
+<div id="wrapper">
+</div>
+
+<button id="video-btn" class="video-btn"></button>
 <div id="video-content"></div>
 <template class="play-inline">
     <style type="text/css">
        /* @import "https://unpkg.com/video.js@7.0.3/dist/video-js.css";*/
-       .video-btn {
-           width: 1rem;
-           height: 1rem;
+       .shadow-video {
+           width: 7.5rem;
+           height: 4rem;
+           display: block;
+           object-fit:fill;
+           object-position: center top;
        }
-        .IIV::-webkit-media-controls-play-button,
-        .IIV::-webkit-media-controls-start-playback-button {
-            opacity: 0;
-            pointer-events: none;
-            width: 5px;
-        }
-        .shadow-video {
-            width: 7.5rem;
-            height: 4rem;
-            display: block;
-            object-fit:fill
-        }
-       /*audio::-webkit-media-controls, video::-webkit-media-controls {
-           opacity: 0 !important;
-       }*/
-       /*video::-webkit-media-controls-panel {
-           display:none !important;
-       }
-       video::-webkit-media-controls-play-button {
-           display: none !important;
-       }*/
-       /*video::-webkit-media-controls-start-playback-button {
-           display: none !important;
-           -webkit-appearance: none;
-       }
-       video::-webkit-media-controls-current-time-display {
-           display: none !important;
-           -webkit-appearance: none;
-       }
-
-       video::-webkit-media-controls-time-remaining-display {
-           display: none !important;
-           -webkit-appearance: none;
-       }
-
-       video::-webkit-media-controls-timeline {
-           display: none !important;
-           -webkit-appearance: none;
-       }
-
-       video::-webkit-media-controls-mute-button {
-           display: none !important;
-           -webkit-appearance: none;
-       }
-
-       video::-webkit-media-controls-volume-slider {
-           display: none !important;
-           -webkit-appearance: none;
-       }
-
-       video::-webkit-media-controls-fullscreen-button {
-           display: none !important;
-           -webkit-appearance: none;
-       }
-
-       video::-internal-media-controls-download-button {
-           display: none !important;
-           -webkit-appearance: none;
-       }*/
-       /**::-moz-list-bullet, *::-moz-list-number {
-           display:none !important;
-       }
-       *::-moz-meter-bar {
-           display:none !important;
-       }
-       :-moz-full-screen:not(:root)::backdrop {
-           display:none !important;
-       }*/
-       /**::backdrop {
-           display:none !important;
-       }
-       :fullscreen:not(:root) {
-           display:none !important;
-       }*/
     </style>
     <script type="application/javascript">
-        setTimeout(function () {
-	        console.log('---', document.getElementById('video-content').shadowRoot.getElementById('shadow-video').querySelectorAll('[pseudo="-webkit-media-controls"]'));
-        }, 1000);
-       function videoPlay () {
+       /*function videoPlay () {
 	       document.getElementById('video-content').shadowRoot.getElementById('shadow-video').play();
-       }
+       }*/
     </script>
-    <content select="#video-content"></content>
+    <content></content>
 </template>
 </body>
 </html>
