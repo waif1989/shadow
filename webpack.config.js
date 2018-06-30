@@ -106,8 +106,8 @@ const config = {
 	devtool: 'source-map',
 	context: __dirname,
 	devServer: {
-		host: '192.168.1.106',
-		// host: '0.0.0.0',
+		// host: '192.168.1.106',
+		host: '0.0.0.0',
 		contentBase: path.join(__dirname, 'dist'), // boolean | string | array, static file location
         // contentBase: path.join(__dirname, 'static'), // boolean | string | array, static file location
 		compress: true, // enable gzip compression
